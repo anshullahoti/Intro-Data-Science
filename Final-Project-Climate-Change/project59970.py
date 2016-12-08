@@ -32,10 +32,13 @@ def open_file():
 	return filename
 
 
-def create_dataframe():
+def create_dataframe(dates=None):
 	filename = open_file()
 	try:
-		return pd.read_csv(filename, parse_dates=['dt'])
+		if dates == None:
+			return pd.read_csv(filename)
+		else:
+			return pd.read_csv(filename, parse_dates=[dates])
 	except:
 		return pd.read_excel(filename)
 
