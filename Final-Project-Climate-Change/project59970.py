@@ -6,6 +6,7 @@
 # 3.  ANNUAL GLOBAL TEMPERATURES
 # 4.  UNCERTAINTY
 # 5.  SEASONS
+# 6.  CARBON EMISSIONS AND FOSSIL FUEL BURNING
 
 
 ##########################################################################################################
@@ -16,6 +17,8 @@ import pandas as pd
 
 from tkinter import Tk
 from tkinter import filedialog as fd
+
+import sklearn.linear_model as lm
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -174,4 +177,32 @@ def plot_avg_seasonal_global_temperatures(dataframe, start_year, end_year):
 	plt.title("Average Global Temperatures by Season [" + str(start_year) + ", " + str(end_year) + "]")
 	plt.xlabel('Years')
 	plt.ylabel('Temperature (Celsius)')
+	plt.show()
+
+
+##########################################################################################################
+# CARBON EMISSIONS AND FOSSIL FUEL BURNING
+
+def get_avg_carbon_concentration(df, start_year, end_year):
+
+	# extract observations of specified year range
+	data = df[(df['YYYY']>=str(start_year)) & (df['YYYY']<=str(end_year))]
+
+	# return numpy array of annual average carbon dioxide concentration
+	return data.groupby(['YYYY']).mean()['CO2(ppm)'].values
+
+def plot_avg_carbon_concentration(df, start_year, end_year):
+
+	# extract corresponding years and ppms
+	years = np.arange(start_year, end_year + 1)
+	ppms = get_avg_carbon_concentration(df, start_year, end_year)
+
+	# plot data
+	plt.figure(figsize=(12, 6))
+	plt.scatter(years, ppms, c=ppms, s=150, alpha=0.6, edgecolors='none', cmap='viridis')
+	plt.xlim([start_year - 5, end_year + 5])
+	plt.grid(True)
+	plt.title("Average CO2 Concentration [" + str(start_year) + ", " + str(end_year) + "]")
+	plt.xlabel("Year")
+	plt.ylabel("Parts per Million (ppm)")
 	plt.show()
