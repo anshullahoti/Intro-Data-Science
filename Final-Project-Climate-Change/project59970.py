@@ -34,7 +34,10 @@ def open_file():
 
 def create_dataframe():
 	filename = open_file()
-	return pd.read_csv(filename, parse_dates=['dt'])
+	try:
+		return pd.read_csv(filename, parse_dates=['dt'])
+	except:
+		return pd.read_excel(filename)
 
 
 ##########################################################################################################
