@@ -1,7 +1,5 @@
 # CSC 599.70 Introduction To Data Science - Final Project
 
-Video Presentation: https://www.youtube.com/watch?v=9VjQQeob8x0&feature=youtu.be
-
 ## Overview
 
 Climate change has certainly become one of humanity's greatest threats.  It is defined as the change in global or regional patterns in climate.  Advancements in technology have allowed scientists to collect various types of data regarding our changing planet, which has led to many significant discoveries.
