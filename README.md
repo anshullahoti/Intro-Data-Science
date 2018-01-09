@@ -1,4 +1,5 @@
-# CSC 599.70 Introduction To Data Science - Final Project
+# Climate Change & Carbon Emissions
+**CSC 599.70 Introduction To Data Science - Final Project**
 
 ## Overview
 
